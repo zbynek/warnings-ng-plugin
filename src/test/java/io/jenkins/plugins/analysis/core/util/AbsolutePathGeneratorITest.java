@@ -2,6 +2,7 @@ package io.jenkins.plugins.analysis.core.util;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Locale;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -86,7 +87,7 @@ public class AbsolutePathGeneratorITest extends IntegrationTestWithJenkinsPerSui
             int size = jenkinsRule.jenkins.getNodes().size();
 
             DumbSlave slave = new DumbSlave("slave" + size, "dummy",
-                    jenkinsRule.createTmpDir().getPath().toLowerCase(), "1",
+                    jenkinsRule.createTmpDir().getPath().toLowerCase(Locale.ENGLISH), "1",
                     Node.Mode.NORMAL, labels, jenkinsRule.createComputerLauncher(null), RetentionStrategy.NOOP,
                     Collections.emptyList());
             jenkinsRule.jenkins.addNode(slave);
